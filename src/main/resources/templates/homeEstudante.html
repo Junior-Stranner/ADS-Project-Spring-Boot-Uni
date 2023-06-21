@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
+rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<title>Cadastro de Estudante</title>
+</head>
+<body>
+<form method="POST" action="/homeEstudante">
+    <div th:if="${estudante}">
+        <input type="hidden" name="id" th:value="${estudante?.id}">
+    </div>
+    <div class="form-group" >
+      <label for="formGroupExampleInput">Nome</label>
+      <input type="text" class="form-control" id="formGroupExampleInput" name="nome" th:value="${estudante?.nome}">
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">CPF</label>
+      <input type="text" class="form-control" id="formGroupExampleInput2" name="cpf" th:value="${estudante?.cpf}">
+    </div> 
+    <div class="form-group">
+        <label for="formGroupExampleInput3">Sobrenome</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" name="sobrenome" th:value="${estudante?.sobrenome}">
+      </div>
+    <p></p>  
+
+    <div>
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+      <br></div>
+      <br><a href="/homeAula">Cadastrar Aula</a>
+      <br><a href="/homeProf">Cadastrar Professor</a></br>
+    </div>
+  </form>
+  </body>
+</html>
