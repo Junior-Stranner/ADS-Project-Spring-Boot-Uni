@@ -10,6 +10,6 @@ import com.br.projetoescola.Model.Professor;
 @Repository
 public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
 
-    Professor findByNome(String professoString);
+    Professor findByNome(String professorString);
 
 }

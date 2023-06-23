@@ -1,12 +1,15 @@
 package com.br.projetoescola.Controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.br.projetoescola.Model.Aula;
@@ -52,8 +55,22 @@ public class EstudanteController {
     // Cadastrar
     // @PostMapping: Determina que o método aceitará requisições HTTP do tipo POST.
 
+  
     @PostMapping("/homeEstudante")
-    public String salvar(Estudante estudante) {
+    public String salvar(Estudante estudante ,@RequestParam("aas") List<Integer> aulaId , @RequestParam("pps")  List<Integer> professorId) {
+        ArrayList<Aula> aulas = new ArrayList<>();
+         ArrayList<Professor> professores = new ArrayList<>();
+        for (Integer id : aulaId) {
+            aulas.add(aRepository.findById(id).get());
+        }
+        estudante.setAulas(aulas);
+        eRepository.save(estudante);
+
+
+           for (Integer id : professorId) {
+            professores.add(pRepository.findById(id).get());
+        }
+        estudante.setProfessores(professores);
         eRepository.save(estudante);
         return "redirect:/listEstudante";
     }
@@ -68,24 +85,24 @@ public class EstudanteController {
         return mv;
     }
 
-    /*
-     * @GetMapping("/excluirEstudante/{id}")
-     * public String excluir(@PathVariable("id") int id) {
-     * estRepository.deleteById(id);
-     * return "redirect:/list";
-     * 
-     * }
-     * 
-     * @GetMapping("/editarEstudante/{id}")
-     * public ModelAndView editar(@PathVariable("id") int id) {
-     * ModelAndView mv = new ModelAndView("home");
-     * Estudante estudante = new Estudante();
-     * estudante = estRepository.findById(id).get();
-     * mv.addObject("estudante", estudante);
-     * 
-     * return mv;
-     * 
-     * }
-     */
+     @GetMapping("/editarEstudante/{id}")
+      public ModelAndView editar(@PathVariable("id") int id) {
+      ModelAndView mv = new ModelAndView("homeEstudante");
+      Estudante estudante = new Estudante();
+      estudante = eRepository.findById(id).get();
+      mv.addObject("estudante", estudante);
+      
+      return mv;
+      
+      }
+    
+      @GetMapping("/excluirEstudante/{id}")
+      public String excluir(@PathVariable("id") int id) {
+      eRepository.deleteById(id);
+      return "redirect:/listEstudante";
+      
+      }
+      
+     
 
 }

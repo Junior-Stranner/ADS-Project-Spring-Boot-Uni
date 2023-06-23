@@ -17,10 +17,10 @@ public class CarregaDados implements CommandLineRunner{
     public void run(String... args) throws Exception {
        String[] professores = {"Jayme","Stélio","Vanessa","Fábio"};
 
-       for (String professoString : professores) {
-           Professor professor = pRepository.findByNome(professoString);
+       for (String professorString : professores) {
+           Professor professor = pRepository.findByNome(professorString);
            if(professor == null){
-            professor = new Professor(0, professoString);
+            professor = new Professor(0, professorString);
             pRepository.save(professor);
            }
        }

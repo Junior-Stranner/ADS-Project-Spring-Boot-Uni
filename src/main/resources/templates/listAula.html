@@ -32,18 +32,20 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
           <tr>
             <th scope="col">#</th>
             <th scope="col">Título</th>
+            <th scope="col ">Excluir</th>
+            <th scope="col ">Editar</th>
           </tr>
         </thead>
         <tbody>
             <tr data-th-each="aula: ${aulas}" data>
                 <td data-th-text="${aula.id}"></td>
                 <td data-th-text="${aula.titulo}"></td>
+                <td><a class="btn" th:href="@{'/excluirAula/'+${aula.id}}">Excluir</a></td>
+                <td><a class="btn" th:href="@{'/editarAula/'+${aula.id}}">Editar</a></td>
                 
             </tr>       
                      
         </tbody>        
       </table>      
-      <a href="/homeAula">Cadastrar nova Aula</a> 
-      <br>
 </body>
 </html>

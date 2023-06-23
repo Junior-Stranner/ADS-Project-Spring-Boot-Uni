@@ -56,29 +56,4 @@ public class AulaController {
         return mv;
     }
 
-    // @PathVariable: A anotação @PathVariable é usada para mapear uma variável de
-    // caminho em uma URL para um parâmetro de método em um controlador. Essa
-    // anotação é útil quando uma parte da URL contém dados que precisam ser
-    // passados para o método do controlador.
-
-    /*
-     * @GetMapping("/excluirAula/{id}")
-     * public String excluir(@PathVariable("id") int id) {
-     * aulaRepository.deleteById(id);
-     * return "redirect:/listAula";
-     * 
-     * }
-     * 
-     * @GetMapping("/editarAula/{id}")
-     * public ModelAndView editar(@PathVariable("id") int id) {
-     * ModelAndView mv = new ModelAndView("homeAula");
-     * Aula aula = new Aula();
-     * aula = aulaRepository.findById(id).get();
-     * mv.addObject("aula", aula);
-     * 
-     * return mv;
-     * 
-     * }
-     */
-
 }

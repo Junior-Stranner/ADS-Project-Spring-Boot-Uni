@@ -26,13 +26,21 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
         <label for="formGroupExampleInput3">Sobrenome</label>
         <input type="text" class="form-control" id="formGroupExampleInput2" name="sobrenome" th:value="${estudante?.sobrenome}">
       </div>
+
+      <th:block th:each="pp :${professores}">
+        <input class="form-check-input" type="checkbox" name="pps" th:value="${pp.id}">
+        <label class="form-check-label" th:text="${pp.nome}"></label>
+      </th:block> 
     <p></p>  
+    <th:block th:each="aa :${aulas}">
+      <input class="form-check-input" type="checkbox" name="aas" th:value="${aa.id}">
+      <label class="form-check-label" th:text="${aa.titulo}"></label>
+    </th:block> 
 
     <div>
       <button type="submit" class="btn btn-primary">Cadastrar</button>
       <br></div>
-      <br><a href="/homeAula">Cadastrar Aula</a>
-      <br><a href="/homeProf">Cadastrar Professor</a></br>
+     
     </div>
   </form>
   </body>

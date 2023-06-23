@@ -35,6 +35,9 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
             <th scope="col">Nome</th>
             <th scope="col">CPF</th>
             <th scope="col">Sobrenome</th>
+            <th scope="col ">Excluir</th>
+            <th scope="col ">Editar</th>
+
             
           </tr>
         </thead>
@@ -44,10 +47,12 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
                 <td data-th-text="${estudante.nome}"></td>
                 <td data-th-text="${estudante.cpf}"></td>
                 <td data-th-text="${estudante.sobrenome}"></td>
-                
+                <td><a class="btn" th:href="@{'/excluirEstudante/'+${estudante.id}}">Excluir</a></td>
+                <td><a class="btn" th:href="@{'/editarEstudante/'+${estudante.id}}">Editar</a></td>
+
             </tr>             
         </tbody>        
-      </table>      
-      <a href="/homeEstudante">Cadastrar novo Estudante</a> 
+      </table>    
+      <a href="/homeEstudante">Cadastrar Estudante</a> 
 </body>
 </html>

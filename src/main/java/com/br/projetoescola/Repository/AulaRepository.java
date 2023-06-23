@@ -10,4 +10,6 @@ import com.br.projetoescola.Model.Aula;
 @Repository
 public interface AulaRepository extends JpaRepository<Aula, Integer> {
 
+    Aula findByTitulo(String aulaString);
+
 }

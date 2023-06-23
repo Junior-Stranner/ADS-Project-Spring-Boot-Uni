@@ -13,11 +13,25 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
 <title>Lista de Professores</title>
 </head>
 <body>
+  <main>
+    <div class="top-content">
+      <div class="nav-bar">
+        <nav>
+          <ul>
+            <li><a href="/listEstudante">Estudantes</a></li>
+            <li><a href="/listAula">Aulas</a></li>
+            <li><a href="/listProfessor">Professores</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
     <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
+            <th scope="col ">Excluir</th>
+            <th scope="col ">Editar</th>
              
           </tr>
         </thead>
@@ -25,10 +39,11 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
             <tr data-th-each="professor: ${professores}" data>
                 <td data-th-text="${professor.id}"></td>
                 <td data-th-text="${professor.nome}"></td>
+                <td><a class="btn" th:href="@{'/excluirProfessor/'+${professor.id}}">Excluir</a></td>
+                <td><a class="btn" th:href="@{'/editarProfessor/'+${professor.id}}">Editar</a></td>
                 
             </tr>              
         </tbody>        
-      </table>      
-      <a href="/homeProfessor">Cadastrar Novo Professor</a> 
+      </table>     
 </body>
 </html>
