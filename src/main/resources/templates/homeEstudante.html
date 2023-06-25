@@ -36,6 +36,13 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
       <input class="form-check-input" type="checkbox" name="aas" th:value="${aa.id}">
       <label class="form-check-label" th:text="${aa.titulo}"></label>
     </th:block> 
+    <p></p>
+    <th:block th:each="avas :${avaliacoes}">
+      <input class="form-check-input" type="checkbox" name="aas" th:value="${avas.id}">
+      <label class="form-check-label" th:text="${avas.data}"></label>
+      <label class="form-check-label" th:text="${avas.materia}"></label>
+      <label class="form-check-label" th:text="${avas.assunto}"></label>
+    </th:block> 
 
     <div>
       <button type="submit" class="btn btn-primary">Cadastrar</button>

@@ -2,6 +2,7 @@ package com.br.projetoescola.Model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Estudante {
@@ -32,6 +34,10 @@ public class Estudante {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "estudante_professor", joinColumns = @JoinColumn(name = "estudante_id"), inverseJoinColumns = @JoinColumn(name = "professor_id"))
     List<Professor> professores;
+
+    //Envia os dados um Para muitos do Estudante para a Avaliacao
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "estudante")
+    List<Avaliacao> avaliacoes;
 
     public int getId() {
         return id;
@@ -92,4 +98,14 @@ public class Estudante {
     public List<Professor> getProfessores() {
         return professores;
     }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
+    }
+
+    
 }

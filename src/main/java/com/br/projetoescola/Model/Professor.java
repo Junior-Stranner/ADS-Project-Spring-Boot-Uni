@@ -29,7 +29,6 @@ public class Professor {
     // Traz todas as entidades que estão relacionadas, ou seja, se a Entidade A
     // possui um relacionamento com a Entidade B, então quando consultar a Entidade
     // A, também será consultado suas referencias na Entidade B.
-
     @ManyToMany(mappedBy = "professores", fetch = FetchType.LAZY)
     List<Estudante> estudantes;
 
